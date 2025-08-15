@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link href="css/templatemo-personal-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Jiyun's</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/static/login.html">login</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-subtitle">안녕하세요. 신입 개발자 이지윤입니다.</div>
+            <h1>my portfolio and blog</h1>
+            <p class="subtitle">제 이력과 개발관련 블로그를 작성했습니다.</p>
+            <a href="#portfolio" class="cta-button">Blog List</a>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView()"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-content">
+            <div class="about-image slide-in-left"></div>
+            <div class="about-text slide-in-right">
+                <h3>26세 신입 백엔드 개발자를 꿈꾸고 있습니다</h3>
+                <p>Django를 중심으로 백엔드 개발을 공부하고 있습니다. 현재는 단순히 동작하는 코드를 넘어서 현업에서 사용되는 설계 패턴을 학습하고 적용하는 데 집중하고 있습니다.</p>
+                <p>View는 단순한 컨트롤러 역할로, Serializer에서 데이터 검증과 변환을, Service Layer에서 비즈니스 로직을 분리하는 등 책임 분리 원칙을 적용한 코드 작성을 목표로 합니다.</p>
+                <p>협업이 가능한 코드 작성이 현재의 핵심 목표입니다. 코드의 가독성, 유지보수성, 테스트 가능성을 고려하여 함께 일할 수 있는 개발자가 되고자 합니다.</p>
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Django REST Framework</span>
+                    <span class="skill-tag">Service Layer Pattern</span>
+                    <span class="skill-tag">Clean Architecture</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title fade-in">Learning Blog</h2>
+            <div class="blog-intro">
+                <p class="fade-in">개발을 공부하면서 배운 것들을 기록하고 정리합니다. 작은 것이라도 꾸준히 기록하며 성장하는 과정을 담고 있습니다.</p>
+            </div>
+
+            <!-- 최근 포스트들 (API로 가져올 예정) -->
+            <div id="recent-posts" class="portfolio-grid">
+                <div class="loading">최근 포스트를 불러오는 중...</div>
+            </div>
+
+            <!-- 더보기 & 새 포스트 버튼들 -->
+            <div class="blog-actions fade-in" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                <div class="loading">버튼을 불러오는 중...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="contact-floating-shapes">
+        <div class="contact-shape contact-shape-1"></div>
+        <div class="contact-shape contact-shape-2"></div>
+        <div class="contact-shape contact-shape-3"></div>
+        <div class="contact-shape contact-shape-4"></div>
+        <div class="contact-shape contact-shape-5"></div>
+        <div class="contact-shape contact-shape-6"></div>
+    </div>
+    <div class="container">
+        <div class="contact-content">
+            <h2 class="section-title fade-in">Contact Me</h2>
+            <p class="fade-in">궁금한 점이 있거나 함께 일하고 싶으시다면 언제든지 연락해 주세요. 발전할 수 있는 기회를 기다리고 있습니다.</p>
+
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <h1>개인정보</h1>
+                    <p><strong>생년월일:</strong> 2000년 1월 6일</p>
+                    <p><strong>이메일:</strong> <a>poi20701556@gmail.com</a></p>
+                    <p><strong>연락처:</strong> <a>010-9447-8446</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <h1>온라인</h1>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/leejiyun1/" target="_blank" style="color: inherit; text-decoration: none;">https://github.com/leejiyun1/</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2025 이지윤 - 백엔드 개발자</p>
+                </div>
+                <div class="footer-right">
+                    <p>꾸준히 성장하는 개발자가 되겠습니다.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/templatemo-personal-javascripts.js"></script>
+
+</body>
+</html>
