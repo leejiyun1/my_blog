@@ -40,9 +40,9 @@ https://templatemo.com/tm-593-personal-shape
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
+            if (navbar && window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-            } else {
+            } else if (navbar) {
                 navbar.classList.remove('scrolled');
             }
         });
@@ -75,17 +75,6 @@ https://templatemo.com/tm-593-personal-shape
             });
         }, { threshold: 0.1 });
 
-        // Observe all animation elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
-            animatedElements.forEach(el => observer.observe(el));
-
-            const portfolioSection = document.querySelector('.portfolio-grid');
-            if (portfolioSection) {
-                portfolioObserver.observe(portfolioSection);
-            }
-        });
-
         // Enhanced smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -101,66 +90,6 @@ https://templatemo.com/tm-593-personal-shape
             });
         });
 
-        // Enhanced form submission with better UX
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            // Add loading state
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            submitBtn.style.background = 'linear-gradient(135deg, #94a3b8, #64748b)';
-            
-            // Simulate form submission with better feedback
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent! ✓';
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                
-                // Show success animation
-                submitBtn.style.transform = 'scale(1.05)';
-                setTimeout(() => {
-                    submitBtn.style.transform = 'scale(1)';
-                }, 200);
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                    document.querySelector('.contact-form').reset();
-                }, 3000);
-            }, 2000);
-        });
-
-        // Enhanced parallax effect for hero background
-        let ticking = false;
-        
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            const rate = scrolled * -0.3;
-            hero.style.transform = `translateY(${rate}px)`;
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        });
-
-        // Add subtle hover effects to skill tags
-        document.querySelectorAll('.skill-tag').forEach(tag => {
-            tag.addEventListener('mouseenter', () => {
-                tag.style.transform = 'translateY(-2px) scale(1.05)';
-            });
-            
-            tag.addEventListener('mouseleave', () => {
-                tag.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
         // Keyboard navigation for accessibility
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
@@ -173,9 +102,8 @@ https://templatemo.com/tm-593-personal-shape
         // 로그인 상태 확인 함수
         async function checkLoginStatus() {
             try {
-                // 세션 기반 인증 확인 (Django 기본 방식)
                 const response = await fetch('/api/users/check-auth/', {
-                    credentials: 'include' // 쿠키 포함
+                    credentials: 'include'
                 });
                 return response.ok;
             } catch (error) {
@@ -209,13 +137,10 @@ https://templatemo.com/tm-593-personal-shape
 
             if (isLoggedIn) {
                 actionsContainer.innerHTML = `
-                    <a href="/static/blog.html" class="cta-button">더 많은 포스트 보기</a>
                     <a href="/static/create.html" class="cta-button" style="background: transparent; border: 2px solid #333; color: #333;">새 포스트 작성</a>
                 `;
             } else {
-                actionsContainer.innerHTML = `
-                    <a href="/static/blog.html" class="cta-button">더 많은 포스트 보기</a>
-                `;
+                actionsContainer.innerHTML = '';  // 로그인 안 했으면 버튼 없음
             }
         }
 
@@ -243,7 +168,42 @@ https://templatemo.com/tm-593-personal-shape
             `).join('');
         }
 
-        // 기존 DOMContentLoaded를 수정
+        // 네비게이션 인증 상태 업데이트
+        async function updateAuthNavigation() {
+            const authNavItem = document.getElementById('auth-nav-item');
+            if (!authNavItem) return;
+
+            try {
+                const response = await fetch('/api/users/check-auth/', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    authNavItem.innerHTML = '<a href="#" onclick="logout()">logout</a>';
+                    authNavItem.style.display = 'block';
+                } else {
+                    authNavItem.innerHTML = '<a href="/static/login.html">login</a>';
+                    authNavItem.style.display = 'block';
+                }
+            } catch (error) {
+                authNavItem.innerHTML = '<a href="/static/login.html">login</a>';
+                authNavItem.style.display = 'block';
+            }
+        }
+        // 로그아웃 함수 추가
+        async function logout() {
+            try {
+                await fetch('/api/users/logout/', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                window.location.reload();
+            } catch (error) {
+                console.error('로그아웃 실패:', error);
+            }
+        }
+
+        // 페이지 로드 시 실행
         document.addEventListener('DOMContentLoaded', () => {
             const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
             animatedElements.forEach(el => observer.observe(el));
@@ -253,6 +213,9 @@ https://templatemo.com/tm-593-personal-shape
                 portfolioObserver.observe(portfolioSection);
             }
 
-            // 최근 포스트 로드 추가
+            // 최근 포스트 로드
             loadRecentPosts();
+
+            // 네비게이션 업데이트
+            updateAuthNavigation();
         });
