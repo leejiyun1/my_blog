@@ -1,0 +1,176 @@
+/* Create Post 페이지 전용 스타일 */
+
+.create-section {
+    min-height: 80vh;
+    padding: 4rem 0;
+}
+
+.create-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    color: #333;
+}
+
+.description {
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+/* 폼 스타일 */
+.post-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Quill 에디터 스타일 */
+#editor {
+    min-height: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.ql-editor {
+    min-height: 300px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.ql-toolbar {
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.ql-container {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+
+/* 폼 액션 버튼 */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.submit-btn {
+    padding: 0.75rem 2rem;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #555;
+}
+
+.submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: #333;
+    color: white;
+}
+
+/* 메시지 스타일 */
+#post-message {
+    margin-top: 1rem;
+    display: none;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+#post-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#post-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .create-section {
+        padding: 2rem 0;
+    }
+
+    .post-form {
+        padding: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .submit-btn,
+    .cancel-btn {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+}

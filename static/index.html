@@ -10,13 +10,13 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">Jiyun's</div>
+            <a href="/static/index.html" class="logo">Jiyun's</a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="/static/login.html">login</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="/static/blog.html">Blog</a></li>
+                <li id="auth-nav-item">
+                    <!-- JavaScript로 동적 생성 -->
+                </li>
             </ul>
             <div class="mobile-menu-toggle" id="mobileMenuToggle">
                 <div class="hamburger"></div>
@@ -30,9 +30,7 @@
     <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/static/blog.html">Blog</a></li>
         </ul>
     </div>
 
@@ -80,25 +78,88 @@
     </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title fade-in">Learning Blog</h2>
-            <div class="blog-intro">
-                <p class="fade-in">개발을 공부하면서 배운 것들을 기록하고 정리합니다. 작은 것이라도 꾸준히 기록하며 성장하는 과정을 담고 있습니다.</p>
-            </div>
-
-            <!-- 최근 포스트들 (API로 가져올 예정) -->
-            <div id="recent-posts" class="portfolio-grid">
-                <div class="loading">최근 포스트를 불러오는 중...</div>
-            </div>
-
-            <!-- 더보기 & 새 포스트 버튼들 -->
-            <div class="blog-actions fade-in" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
-                <div class="loading">버튼을 불러오는 중...</div>
+            <h2 class="section-title fade-in">Project</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                   <div class="portfolio-image" style="background-image: url('/static/images/moeun.png'); background-size: cover; background-position: center center;"></div>
+                   <div class="portfolio-content">
+                       <h4>전통주 프로젝트</h4>
+                       <p>오즈코딩스쿨 최종 프로젝트로 팀장을 담당했습니다. 전체 API 설계 및 구현, 프론트엔드·기획팀과의 협업을 통해 프로젝트를 성공적으로 완료했습니다. 멘토링을 통한 코드 리뷰와 지속적인 리팩토링을 진행하고 있습니다.</p>
+                       <div class="portfolio-tech">
+                           <span class="tech-tag">Django</span>
+                           <span class="tech-tag">DRF</span>
+                           <span class="tech-tag">PostgreSQL</span>
+                       </div>
+                   </div>
+                </div>
+                <div class="portfolio-item">
+                   <div class="portfolio-image" style="background-image: url('/static/images/ozcoding.png'); background-size: cover; background-position: center center;"></div>
+                   <div class="portfolio-content">
+                       <h4>학원 학습 웹</h4>
+                       <p>Q&A 시스템의 Questions 기능을 담당하여 개발했습니다. Redis를 활용한 캐싱 전략을 설계하고 구현하여 데이터 접근 성능을 최적화했습니다.</p>
+                       <div class="portfolio-tech">
+                           <span class="tech-tag">Django</span>
+                           <span class="tech-tag">Redis</span>
+                       </div>
+                   </div>
+                </div>
+                <div class="portfolio-item">
+                   <div class="portfolio-image"></div>
+                   <div class="portfolio-content">
+                       <h4>가계부 프로젝트</h4>
+                       <p>Django 기반 가계부 API를 설계·구현했습니다. 팀 협업을 통한 코드 리뷰 경험을 쌓았으며, Pandas를 활용한 데이터 분석 및 시각화 기능을 완성했습니다.</p>
+                       <div class="portfolio-tech">
+                           <span class="tech-tag">Django</span>
+                           <span class="tech-tag">Pandas</span>
+                       </div>
+                   </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Dashboard Interface</h4>
+                        <p>Clean and functional dashboard design for data analytics platform with complex information architecture and real-time data visualization.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">SCSS</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Marketing Website</h4>
+                        <p>Modern marketing website with interactive animations and optimized conversion funnels. Built for maximum performance and SEO.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Framer Motion</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>Creative Portfolio</h4>
+                        <p>Artistic portfolio website featuring immersive galleries, smooth transitions, and creative storytelling for a digital artist.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">GSAP</span>
+                            <span class="tech-tag">WebGL</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section -->
 <section id="contact" class="contact">
